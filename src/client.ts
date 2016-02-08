@@ -5,5 +5,5 @@ import {ROUTER_PROVIDERS} from 'angular2/router';
 import {App} from './app/app';
 
 bootstrap(App, [
-  ...ROUTER_PROVIDERS
+    ...ROUTER_PROVIDERS
 ]);

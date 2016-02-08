@@ -1,57 +1,27 @@
 import {Component, Directive, ElementRef, Renderer} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-
-
-@Directive({
-  selector: '[x-large]'
-})
-export class XLarge {
-  constructor(element: ElementRef, renderer: Renderer) {
-    // we must interact with the dom through Renderer for webworker/server to see the changes
-    renderer.setElementStyle(element.nativeElement, 'fontSize', 'x-large');
-  }
-}
-
+import {Home} from "./component/home/home";
+import {About} from "./component/about/about";
 
 
 @Component({
-  selector: 'home',
-  template: `
-  Home
-  `
-})
-export class Home {
-}
-
-@Component({
-  selector: 'about',
-  template: `
-  About
-  `
-})
-export class About {
-}
-
-
-@Component({
-  selector: 'app',
-  directives: [
-    ...ROUTER_DIRECTIVES,
-    XLarge
-  ],
-  styles: [`
+    selector: 'app',
+    directives: [
+        ...ROUTER_DIRECTIVES,
+    ],
+    styles: [`
     .router-link-active {
       background-color: lightgray;
     }
   `],
-  template: `
+    template: `
   <div>
     <nav>
       <a [routerLink]=" ['./Home'] ">Home</a>
       <a [routerLink]=" ['./About'] ">About</a>
     </nav>
     <div>
-      <span x-large>Hello, {{ name }}!</span>
+      <span>Hello, {{ name }}!</span>
     </div>
 
     name: <input type="text" [value]="name" (input)="name = $event.target.value" autofocus>
@@ -62,12 +32,12 @@ export class About {
   `
 })
 @RouteConfig([
-  { path: '/', component: Home, name: 'Home' },
-  { path: '/home', component: Home, name: 'Home' },
-  { path: '/about', component: About, name: 'About' }
+    {path: '/', component: Home, name: 'Home'},
+    {path: '/home', component: Home, name: 'Home'},
+    {path: '/about', component: About, name: 'About'}
 ])
 export class App {
-  name: string = 'Angular 2';
+    name:string = 'Angular 2';
 }
 
 

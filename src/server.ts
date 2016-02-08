@@ -18,18 +18,18 @@ app.set('views', __dirname);
 app.set('view engine', 'html');
 
 function ngApp(req, res) {
-  let baseUrl = '/';
-  let url = req.originalUrl || '/';
-  res.render('index', {
-    App,
-    providers: [
-      provide(APP_BASE_HREF, {useValue: baseUrl}),
-      provide(REQUEST_URL, {useValue: url}),
-      ROUTER_PROVIDERS,
-      SERVER_LOCATION_PROVIDERS,
-    ],
-    preboot: true
-  });
+    let baseUrl = '/';
+    let url = req.originalUrl || '/';
+    res.render('index', {
+        App,
+        providers: [
+            provide(APP_BASE_HREF, {useValue: baseUrl}),
+            provide(REQUEST_URL, {useValue: url}),
+            ROUTER_PROVIDERS,
+            SERVER_LOCATION_PROVIDERS,
+        ],
+        preboot: true
+    });
 }
 
 // Serve static files
@@ -42,5 +42,5 @@ app.use('/home', ngApp);
 
 // Server
 app.listen(3000, () => {
-  console.log('Listen on http://localhost:3000');
+    console.log('Listen on http://localhost:3000');
 });
