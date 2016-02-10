@@ -12,6 +12,9 @@ var common = {
                 loader: 'ts-loader',
                 exclude: [/node_modules/]
             },
+            // Support for CSS as raw text
+            { test: /\.css$/, loader: 'raw-loader' },
+
             // support for .html as raw text
             {
                 test: /\.html$/,
@@ -21,8 +24,9 @@ var common = {
             // Support for CSS as raw text
             {
                 test: /\.scss$/,
-                exclude: /node_modules/,
-                loaders: ['raw-loader', 'sass-loader', 'resolve-url']            }
+                //exclude: /node_modules/,
+                loaders: ['raw-loader', 'sass-loader', 'resolve-url']
+            }
 
 
         ]
