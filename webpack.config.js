@@ -3,7 +3,7 @@ var path = require('path');
 
 var common = {
     resolve: {
-        extensions: ['', '.ts', '.json', '.js','.html']
+        extensions: ['', '.ts', '.json', '.js','.html', '.css','.scss']
     },
     module: {
         loaders: [
@@ -17,7 +17,13 @@ var common = {
                 test: /\.html$/,
                 loader: 'raw-loader',
                 exclude: [ root('src/index.html') ]
-            }
+            },
+            // Support for CSS as raw text
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                loaders: ['raw-loader', 'sass-loader', 'resolve-url']            }
+
 
         ]
     }
